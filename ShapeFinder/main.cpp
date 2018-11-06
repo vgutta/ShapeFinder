@@ -21,6 +21,11 @@ void thresh_callback(int, void* );
 int main( int argc, char** argv ) {
     /// Load source image and convert it to gray
     src = imread( argv[1], 1 );
+    /// Check for invalid input
+    if(! src.data ){
+        cout <<  "Could not open or find the image" << std::endl ;
+        return -1;
+    }
     /// Convert image to gray and blur it
     cvtColor( src, src_gray, CV_BGR2GRAY );
     blur( src_gray, src_gray, Size(3,3) );
